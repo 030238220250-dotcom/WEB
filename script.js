@@ -34,7 +34,7 @@ function checkout() {
     total: cart.reduce((acc, i) => acc + i.price, 0)
   };
 
-  fetch("https://script.google.com/macros/s/AKfycbyU45n3I7Lqd1T2R0xxu5xbzA8s8cw6IviuO4EoR9vxNXEKt6_t1iad9vYAac67ME2U/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbw7F35ecylvjZHvIJbbvfvhfPC5NEnIFfNC0lprS0TojKrj-M67CY9YnqpMCL6E2OV0/exec", {
     method: "POST",
     mode: "no-cors",
      headers: {
@@ -51,5 +51,6 @@ function checkout() {
   })
   .catch(err => alert("❌ Lỗi: " + err));
 }
+
 
 
