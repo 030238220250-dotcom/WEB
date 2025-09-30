@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quản lý đơn hàng</title>
+  <style>
+    body{font-family:sans-serif;margin:20px;background:#f9fafb;color:#111}
+    table{border-collapse:collapse;width:100%}
+    th,td{border:1px solid #ddd;padding:8px;text-align:left}
+    th{background:#0ea5a4;color:white}
+  </style>
+</head>
+<body>
+  <h2>Danh sách đơn hàng</h2>
+  <button onclick="window.location='index.html'">⬅ Quay lại shop</button>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Tên KH</th><th>Điện thoại</th><th>Sản phẩm</th><th>Tổng</th><th>Ngày</th></tr>
+    </thead>
+    <tbody id="orders"></tbody>
+  </table>
+
+  <script>
+    const formatVND=n=>'₫'+n.toLocaleString('vi-VN');
+    const orders=JSON.parse(localStorage.getItem("orders")||"[]");
+    const tbody=document.getElementById("orders");
+    orders.forEach(o=>{
+      const tr=document.createElement("tr");
+      tr.innerHTML=`<td>${o.id}</td>
+        <td>${o.name}</td>
+        <td>${o.phone}</td>
+        <td>${o.items.map(i=>i.title+" x"+i.qty).join(", ")}</td>
+        <td><b>${formatVND(o.total)}</b></td>
+        <td>${o.date}</td>`;
+      tbody.appendChild(tr);
+    });
+  </script>
+</body>
+</html>
