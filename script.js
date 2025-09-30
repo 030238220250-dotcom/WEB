@@ -36,6 +36,10 @@ function checkout() {
 
   fetch("https://script.google.com/macros/s/AKfycbxrB9C1KHmVnj7fIIEGZypp84gXmAb2xALozWLMjyBNBjTeixPh0BH22qmFBV9lJaE4/exec", {
     method: "POST",
+    mode: "no-cors",
+     headers: {
+    "Content-Type": "application/json",
+     },
     body: JSON.stringify(data)
   })
   .then(res => res.text())
@@ -47,3 +51,4 @@ function checkout() {
   })
   .catch(err => alert("❌ Lỗi: " + err));
 }
+
